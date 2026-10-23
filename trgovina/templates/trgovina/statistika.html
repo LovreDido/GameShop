@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>GameShop | Statistika</title>
+    <link rel="stylesheet" href="https://bootswatch.com/5/cyborg/bootstrap.min.css">
+</head>
+<body class="bg-dark text-white">
+    <div class="container mt-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="text-success">📊 Prodajna Statistika</h1>
+            <a href="{% url 'katalog' %}" class="btn btn-outline-light">Natrag u Trgovinu</a>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card bg-secondary border-0">
+                    <div class="card-header bg-primary text-white">Top 5 Najprodavanijih Igara</div>
+                    <div class="card-body">
+                        <table class="table table-dark table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Naslov Igre</th>
+                                    <th>Developer</th>
+                                    <th class="text-center">Prodano Primjeraka</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for igra in najprodavanije %}
+                                <tr>
+                                    <td>{{ igra.naslov }}</td>
+                                    <td>{{ igra.developer.naziv }}</td>
+                                    <td class="text-center"><span class="badge bg-success">{{ igra.prodano }}</span></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card bg-info text-dark">
+                    <div class="p-3 mb-2 bg-purple text-white"> 
+                        <h3>Ukupno Igara u Bazi</h3>
+                        <h1 class="display-3">{{ ukupan_broj }}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-info text-dark">
+                    <div class="p-3 mb-2 bg-purple text-white"> 
+                        <h3>Broj kategorija</h3>
+                        <h1 class="display-3">{{ brojKategorija }}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-info text-dark">
+                    <div class="p-3 mb-2 bg-purple text-white"> 
+                        <h3>Broj autora</h3>
+                        <h1 class="display-3">{{ brojAutora }}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-info text-dark">
+                    <div class="p-3 mb-2 bg-purple text-white"> 
+                        <h3>Broj registriranih korisnika</h3>
+                        <h1 class="display-3">{{ brojKorisnika }}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-info text-dark">
+                    <div class="p-3 mb-2 bg-purple text-white"> 
+                        <h3>Kategorija s najvecim brojem igara</h3>
+                        <h1 class="display-3">{{ kat_najvise }}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

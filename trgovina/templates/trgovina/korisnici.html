@@ -1,0 +1,18 @@
+<form method="get">
+    <select name="uloga">
+        <option value="">Svi</option>
+        <option value="admin">Administratori</option>
+        <option value="obican">Obični korisnici</option>
+    </select>
+    <button type="submit">Pretraži po ulozi</button>
+</form>
+
+<table>
+    {% for k in korisnici %}
+    <tr>
+        <td>{{ k.username }}</td>
+        <td>{{ k.email }}</td>
+        <td>{% if k.is_staff %}Admin{% else %}Korisnik{% endif %}</td>
+    </tr>
+    {% endfor %}
+</table>

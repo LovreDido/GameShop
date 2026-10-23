@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel | GameShop</title>
+    <link rel="stylesheet" href="https://bootswatch.com/5/cyborg/bootstrap.min.css">
+</head>
+<body class="bg-dark text-white">
+    <div class="container mt-5">
+        <div class="card bg-secondary p-4 shadow">
+            <h2 class="text-success mb-4">{% if uredjujem %}Uredi igru{% else %}Dodaj novu igru{% endif %}</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    {{ form.as_p }}
+                </div>
+                <button type="submit" class="btn btn-success w-100">Spremi promjene</button>
+                <a href="{% url 'katalog' %}" class="btn btn-outline-light w-100 mt-2">Odustani</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
